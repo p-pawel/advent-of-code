@@ -1,0 +1,43 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation libs.guava
+}
+
+testing {
+    suites {
+        // Configure the built-in test suite
+        test {
+            // Use JUnit Jupiter test framework
+            useJUnitJupiter('5.10.3')
+        }
+    }
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'aoc.year2024.day05.part01.PrintQueueEnterpriseEditionApp'
+}
+
+run {
+    standardInput = System.in
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClass
+    }
+}
