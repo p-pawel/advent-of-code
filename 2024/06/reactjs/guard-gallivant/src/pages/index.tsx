@@ -1,8 +1,7 @@
 import localFont from "next/font/local";
 import React, {useState} from "react";
-import {Player} from "@/model/player";
 import {BoardRendererService} from "@/services/board-renderer.service";
-import {Board} from "@/model/board";
+import {GameStateService} from "@/services/game-state.service";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,28 +14,25 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const inputString =
+    "....#.....\n" +
+    ".........#\n" +
+    "..........\n" +
+    "..#.......\n" +
+    ".......#..\n" +
+    "..........\n" +
+    ".#..^.....\n" +
+    "........#.\n" +
+    "#.........\n" +
+    "......#...";
+
+const gameStateService = new GameStateService(inputString)
 const boardRenderService = new BoardRendererService(' ');
 
 
 export default function Home() {
 
-  const inputString = 
-      "....#.....\n" +
-      ".........#\n" +
-      "..........\n" +
-      "..#.......\n" +
-      ".......#..\n" +
-      "..........\n" +
-      ".#..^.....\n" +
-      "........#.\n" +
-      "#.........\n" +
-      "......#...";
-
-  const [board, setInnerField] = useState<Board>(new Board(inputString)); // Example field that will be rendered
-
-  const [player, setPlayer] = useState<Player>(Player.fromTheInputBoard(inputString));
-  const [boardView, setBoardView] = useState<string>(boardRenderService.renderBoardView(board, player));
-  
+  const [boardView, setBoardView] = useState<string>(boardRenderService.renderBoardView(gameStateService.board, gameStateService.player));
   
   return (
     <div
