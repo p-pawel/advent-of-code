@@ -24,10 +24,22 @@ export class GameStateService {
 
     public move() {
         let newPlayer = this.player.forward();
+        if (this.isOutsideBoard(newPlayer, 1)) {
+            return
+        }
+
         if (!this.board.isObstacle(newPlayer.x, newPlayer.y)) {
             this._player = newPlayer;
         } else {
             this._player = this.player.turnRight();
         }
+    }
+
+    private isOutsideBoard(newPlayer: Player, margin: number) {
+        return newPlayer.x < -margin || newPlayer.y < -margin || newPlayer.x >= this.board.width + margin || newPlayer.y >= this.board.height +margin;
+    }
+
+    isPlayerWithinBoard() {
+        return !this.isOutsideBoard(this.player, 0);
     }
 }

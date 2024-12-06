@@ -33,10 +33,12 @@ const boardRenderService = new BoardRendererService(' ');
 export default function Home() {
 
   const [boardView, setBoardView] = useState<string>(boardRenderService.renderBoardView(gameStateService.board, gameStateService.player));
+  const [canMove, setCanMove] = useState<boolean>(true);
 
   function move() {
     gameStateService.move();  
     setBoardView(boardRenderService.renderBoardView(gameStateService.board, gameStateService.player));
+    setCanMove(gameStateService.isPlayerWithinBoard());
   }
 
   return (
@@ -48,10 +50,15 @@ export default function Home() {
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <button
+            disabled={!canMove}
             onClick={() => move()}    
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Move
+            className="bg-blue-500 disabled:bg-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Move { canMove }
         </button>
+        <div 
+          hidden={canMove}>
+          Game Over
+        </div>
       </footer>
     </div>
   );

@@ -6,7 +6,7 @@ export class Player {
     public readonly y: number;
     public readonly d: PlayerDirection;
 
-    private constructor(x: number, y: number, d: PlayerDirection) {
+    public constructor(x: number, y: number, d: PlayerDirection) {
         this.x = x;
         this.y = y;
         this.d = d;
@@ -27,9 +27,7 @@ export class Player {
 
     forward(): Player {
         const [moveX, moveY] = this.calcMove(this.d);
-        return new Player(
-            this.x + moveX, this.y + moveY, this.d
-        );
+        return new Player(this.x + moveX, this.y + moveY, this.d);
     }
 
     turnRight() {
