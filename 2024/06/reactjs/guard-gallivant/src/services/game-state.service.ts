@@ -21,4 +21,13 @@ export class GameStateService {
     get player(): Player {
         return this._player;
     }
+
+    public move() {
+        let newPlayer = this.player.forward();
+        if (!this.board.isObstacle(newPlayer.x, newPlayer.y)) {
+            this._player = newPlayer;
+        } else {
+            this._player = this.player.turnRight();
+        }
+    }
 }

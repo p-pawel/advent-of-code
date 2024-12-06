@@ -1,4 +1,3 @@
-
 type PlayerDirection = '^' | '>' | 'v' | '<';
 
 export class Player {
@@ -7,22 +6,11 @@ export class Player {
     public readonly y: number;
     public readonly d: PlayerDirection;
 
-    constructor(x: number, y: number, d: PlayerDirection) {
+    private constructor(x: number, y: number, d: PlayerDirection) {
         this.x = x;
         this.y = y;
         this.d = d;
     }
-
-// constructor(
-    //     private inputString: string
-    // ) {
-    //     {
-    //         this.x, this.y, this.d
-    //     }
-    //     = this.findPlayer(inputString);
-    //     // this.width = this.inputString.split("\n")[0].length;
-    //     // this.height = this.inputString.split("\n").length;
-    // }
 
     public static fromTheInputBoard(inputString: string) {
         let lines = inputString.split('\n');
@@ -34,7 +22,45 @@ export class Player {
                 }
             }
         }
-        // return undefined;
         throw new Error('Player not found in the input string');
+    }
+
+    forward(): Player {
+        const [moveX, moveY] = this.calcMove(this.d);
+        return new Player(
+            this.x + moveX, this.y + moveY, this.d
+        );
+    }
+
+    turnRight() {
+        return new Player(
+            this.x, this.y, this.calcRotate(this.d)
+        );
+    }
+
+    private calcRotate(d: PlayerDirection): PlayerDirection {
+        switch (d) {
+            case "^":
+                return ">";
+            case ">":
+                return "v";
+            case "v":
+                return "<";
+            case "<":
+                return "^";
+        }
+    }
+
+    private calcMove(d: PlayerDirection): number[] {
+        switch (d) {
+            case "^":
+                return [0, -1];
+            case ">":
+                return [1, 0];
+            case "v":
+                return [0, 1];
+            case "<":
+                return [-1, 0];
+        }
     }
 }

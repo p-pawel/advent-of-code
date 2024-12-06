@@ -12,4 +12,7 @@ export class Board {
         this.content = inputString.replace("^", ".");
     }
 
+    isObstacle(x: number, y: number) {
+        return this.inputString.split("\n")[y].charAt(x) == '#';
+    }
 }
