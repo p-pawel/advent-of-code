@@ -35,12 +35,17 @@ export default function Home() {
   const [boardView, setBoardView] = useState<string>(boardRenderService.renderBoardView(gameStateService.board, gameStateService.player));
   const [canMove, setCanMove] = useState<boolean>(true);
   const [visits, setVisits] = useState<number>(1);
+  const [autogoing, setAutogoing] = useState<boolean>(false);
 
   function move() {
     gameStateService.move();  
     setBoardView(boardRenderService.renderBoardView(gameStateService.board, gameStateService.player));
     setCanMove(gameStateService.isPlayerWithinBoard());
     setVisits(gameStateService.countVisits());
+
+    if (autogoing && gameStateService.isPlayerWithinBoard()) {
+      setTimeout(() => move(), 100); // perhaps this should become an effect to allow to stop the loop again
+    }
   }
 
   return (
@@ -51,14 +56,26 @@ export default function Home() {
         <pre>{ boardView }</pre>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+        <div>
         <button
             disabled={!canMove}
             onClick={() => move()}    
             className="bg-blue-500 disabled:bg-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           { canMove ? 'Move' : 'Game over'}
         </button>
-        <div >
-          Visits: { visits }
+          <div>
+            <label>
+              <input
+                  type="checkbox"
+                  checked={autogoing}
+                  onChange={() => setAutogoing(!autogoing)}
+              />
+              auto
+            </label>
+          </div>
+        </div>
+        <div>
+          Visits: {visits}
         </div>
       </footer>
     </div>
