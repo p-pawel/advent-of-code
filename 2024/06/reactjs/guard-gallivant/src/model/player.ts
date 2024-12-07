@@ -30,13 +30,18 @@ export class Player {
         return new Player(this.x + moveX, this.y + moveY, this.d);
     }
 
+    backward(): Player {
+        const [moveX, moveY] = this.calcMove(this.d);
+        return new Player(this.x - moveX, this.y - moveY, this.d);
+    }
+
     turnRight() {
         return new Player(
             this.x, this.y, this.calcRotate(this.d)
         );
     }
 
-    private calcRotate(d: PlayerDirection): PlayerDirection {
+    calcRotate(d: PlayerDirection): PlayerDirection {
         switch (d) {
             case "^":
                 return ">";

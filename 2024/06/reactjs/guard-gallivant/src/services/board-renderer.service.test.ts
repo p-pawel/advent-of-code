@@ -28,7 +28,7 @@ describe('BoardRendererService', () => {
 
         // act
 
-        const user = boardRenderer.renderBoardView(board, player);
+        const user = boardRenderer.renderBoardView(board, player, [], undefined);
 
         // assert
 
@@ -64,7 +64,7 @@ describe('BoardRendererService', () => {
 
         // act
 
-        const user = boardRenderer.renderBoardView(board, player);
+        const user = boardRenderer.renderBoardView(board, player, [], undefined);
 
         // assert
 
@@ -73,6 +73,43 @@ describe('BoardRendererService', () => {
             " ... \n" +
             " ... \n" +
             " ... \n" +
+            "  v  "
+        );
+    });
+
+    it('should redner some history', async () => {
+
+        // arrange
+        
+        let inputString =
+            "...\n" +
+            "...\n" +
+            "...";
+
+        const board: Board = new Board(inputString);
+
+        const player: Player = new Player(1, 3, 'v');
+
+        const boardRenderer = new BoardRendererService(' ');
+
+        // act
+
+        let history = [
+            new Player(0, 0, '>'),
+            new Player(1, 0, 'v'),
+            new Player(1, 1, 'v'),
+            new Player(1, 2, 'v'),
+        ];
+        
+        const user = boardRenderer.renderBoardView(board, player, history, undefined);
+
+        // assert
+
+        expect(user).toEqual(
+            "     \n" +
+            " >v. \n" +
+            " .v. \n" +
+            " .v. \n" +
             "  v  "
         );
     });
