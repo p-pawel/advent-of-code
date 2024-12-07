@@ -1,4 +1,8 @@
+# AoC 2024: Day 06
 
+# Demo
+
+https://p-pawel.github.io/advent-of-code/2024/06/reactjs/guard-gallivant/out/index.html
 
 # Planning 
 
