@@ -7,7 +7,7 @@ describe('Player', () => {
 
         // arrange
 
-        let inputString =
+        const inputString =
             "....#.....\n" +
             ".........#\n" +
             "..........\n" +
@@ -40,7 +40,7 @@ describe('Player', () => {
 
         // arrange
 
-        let inputString =
+        const inputString =
             "...\n" +
             ".>.\n" +
             "...\n";

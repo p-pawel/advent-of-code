@@ -39,7 +39,7 @@ export class GameStateService {
     }
     
     public move() {
-        let newPlayer = this.player.forward();
+        const newPlayer = this.player.forward();
         if (this.isOutsideBoard(newPlayer, 1)) {
             return
         }
@@ -79,12 +79,12 @@ export class GameStateService {
         if (history.length <= 1) { // don't block at start point
             return;
         }
-        
-        let forward = testedPose.forward();
-        let assumedObstacle = new Point(forward.x, forward.y);
-        let poseIfDetourHere = testedPose.turnRight();
+
+        const forward = testedPose.forward();
+        const assumedObstacle = new Point(forward.x, forward.y);
+        const poseIfDetourHere = testedPose.turnRight();
         if (this.wouldThatLeadToExactPreviousPosition(poseIfDetourHere, false, assumedObstacle)) {
-            let point = new Point(forward.x, forward.y);
+            const point = new Point(forward.x, forward.y);
             if (!this.isThatPointInHistory(point, this.history)) { // placing obstacle here would change the history!
                 this._possibleLoopPlaces.add(point);
             }

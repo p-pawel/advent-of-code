@@ -13,9 +13,9 @@ export class Player {
     }
 
     public static fromTheInputBoard(inputString: string) {
-        let lines = inputString.split('\n');
+        const lines = inputString.split('\n');
         for (let y = 0; y < lines.length; y++) {
-            let line = lines[y];
+            const line = lines[y];
             for (let x = 0; x < line.length; x++) {
                 if (['^', '>', 'v', '<'].includes(line[x])) {
                     return new Player(x, y, line[x] as PlayerDirection);

@@ -9,7 +9,7 @@ describe('BoardRendererService', () => {
 
         // arrange
 
-        let inputString = "....#.....\n" +
+        const inputString = "....#.....\n" +
             ".........#\n" +
             "..........\n" +
             "..#.......\n" +
@@ -51,7 +51,7 @@ describe('BoardRendererService', () => {
 
         // arrange
         
-        let inputString =
+        const inputString =
             "...\n" +
             "...\n" +
             "...";
@@ -81,7 +81,7 @@ describe('BoardRendererService', () => {
 
         // arrange
         
-        let inputString =
+        const inputString =
             "...\n" +
             "...\n" +
             "...";
@@ -94,7 +94,7 @@ describe('BoardRendererService', () => {
 
         // act
 
-        let history = [
+        const history = [
             new Player(0, 0, '>'),
             new Player(1, 0, 'v'),
             new Player(1, 1, 'v'),

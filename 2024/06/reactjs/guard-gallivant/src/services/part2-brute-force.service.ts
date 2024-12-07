@@ -9,12 +9,12 @@ export class Part2BruteForceService {
     }
 
     public main() {
-        let loopableObstacles: Point[] = [];
+        const loopableObstacles: Point[] = [];
              
         const initialPlayer = this.gameState.player;
 
-        let width = this.gameState.board.width;
-        let height = this.gameState.board.height;
+        const width = this.gameState.board.width;
+        const height = this.gameState.board.height;
         
         for (let x = 0; x < width; x++) {
             for (let y = 0; y < height; y++) {

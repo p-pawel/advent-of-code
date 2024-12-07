@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {BoardRendererService} from "@/services/board-renderer.service";
 import {GameStateService} from "@/services/game-state.service";
-import {inputString} from "./doNotCommit";
-// import {inputString} from "./exampleString";
+// import {inputString} from "../data/doNotCommit";
+import {inputString} from "../data/exampleString";
 
 // import {Part2BruteForceService} from "@/services/part2-brute-force.service";
 // const bruteForceService = new Part2BruteForceService(inputString);
@@ -51,7 +51,7 @@ export default function Home() {
             disabled={!canMove || ownSteps}
             onClick={() => move()}    
             className="bg-blue-500 disabled:bg-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          { canMove ? (ownSteps ? 'Looped' : 'Move') : 'Left board'}
+          { canMove ? (ownSteps ? 'Guard is looped' : 'Move') : 'Guard left a board'}
         </button>
           <div>
             <label>
