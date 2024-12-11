@@ -1,4 +1,5 @@
 {-# LANGUAGE GADTs #-} -- I'm keeping this for VSC only as it ignores default-extensions from Cabal file
+import Data.MemoTrie
 
 class StoneChangeRule s where
     isApplicable :: s -> Int -> Bool
@@ -35,15 +36,20 @@ applyFirstMatching (AnyStrategy s : rest) x
     | isApplicable s x = process s x
     | otherwise = applyFirstMatching rest x
 
-transformList :: [Int] -> [Int]
-transformList = concatMap (applyFirstMatching strategies)
+countStones :: Int -> Int -> Int
+countStones number repeats = do
+    if repeats == 0
+        then
+            1
+        else do
+            sum $ map ( `countStonesMemo` (repeats-1)) $ applyFirstMatching strategies number
 
-applyNTimes :: Int -> (a -> a) -> a -> a
-applyNTimes 0 _ x = x
-applyNTimes n f x = f (applyNTimes (n-1) f x)
+countStonesMemo :: Int -> Int -> Int
+countStonesMemo = memo2 countStones
 
 main :: IO ()
 main = do
     input <- getLine
     let intArray = map read $ words input :: [Int]
-    print $ length $ applyNTimes 25 transformList intArray
+    putStrLn $ "Part 1: " ++ show (sum $ map (`countStones` 25) intArray)
+    putStrLn $ "Part 2: " ++ show (sum $ map (`countStones` 75) intArray)
