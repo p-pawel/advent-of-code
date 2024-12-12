@@ -7,7 +7,7 @@ fun main() {
         readlnOrNull()?.takeIf { it.isNotEmpty() }
     }.toList()
 
-    val gardenPlots = lines.flatMapIndexed { y, row ->
+    val gardenPlots = lines.flatMapIndexed() { y, row ->
         row.mapIndexed { x, plant ->
             GardenPlot(x, y, plant)
         }
@@ -17,8 +17,16 @@ fun main() {
         currentRepository.addPlot(point)
     }
 
-    val price1 = gardenState.clusters
-        .sumOf { cluster -> cluster.getArea() * cluster.getPerimeter() }
+    println("Part 1: ${calcPrice1(gardenState)}")
+    println("Part 2: ${calcPrice2(gardenState)}")
+}
 
-    println(price1)
+private fun calcPrice1(gardenState: GardenState): Int {
+    return gardenState.clusters
+        .sumOf { cluster -> cluster.getArea() * cluster.getPerimeter() }
+}
+
+private fun calcPrice2(gardenState: GardenState): Int {
+    return gardenState.clusters
+        .sumOf { cluster -> cluster.getArea() * cluster.getSides() }
 }

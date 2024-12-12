@@ -10,7 +10,10 @@ repositories {
 }
 
 dependencies {
+    val assertJVersion = "3.26.3"
+
     testImplementation(kotlin("test"))
+    testImplementation("org.assertj:assertj-core:$assertJVersion")
 }
 
 tasks.test {
