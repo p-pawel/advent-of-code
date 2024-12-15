@@ -11,42 +11,33 @@ fun main() {
         .takeWhile { it.isNotEmpty() }
         .toList()
 
-    val map = parseMap(mapLines)
+    val score1 = executeGame(mapLines, sequenceLines, 1)
+    val score2 = executeGame(mapLines, sequenceLines, 2)
+
+    println("Part 1: $score1")
+    println("Part 2: $score2")
+}
+
+fun executeGame(
+    mapLines: List<String>,
+    sequenceLines: List<String>,
+    scale: Int
+): Int {
+    val map = parseMap(mapLines, scale)
 
     val finalBoard = sequenceLines
         .filter { it.isNotEmpty() }
         .flatMap { it.toList() }
-        .fold(map) { board, direction -> move(board, direction) }
-
-    println(finalBoard.getMapString())
-
-    val score = finalBoard.countScore()
-
-    println(score)
-}
-
-fun parseMap(strings: List<String>): Board {
-
-    var robot: Point? = null
-    var walls: MutableList<Point> = mutableListOf<Point>()
-    var boxes: MutableList<Point> = mutableListOf<Point>()
-
-    strings.forEachIndexed { y, line ->
-        for (x in line.indices) {
-            when (line[x]) {
-                '@' -> robot = Point(x, y)
-                '#' -> walls.add(Point(x, y))
-                'O' -> boxes.add(Point(x, y))
+        .fold(map) { board, direction ->
+            try {
+                board.applyMove(direction)
+            } catch (_: Board.CantMoveTheBox) {
+                board
             }
         }
-    }
 
-    return Board(
-        strings[0].length,
-        strings.size,
-        robot!!,
-        walls,
-        boxes
-    )
+//    println(getMapString(finalBoard))
+
+    return finalBoard.countScore()
+
 }
-

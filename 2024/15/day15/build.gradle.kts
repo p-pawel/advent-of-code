@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.21"
+    application
 }
 
 group = "aoc.year2024"
@@ -15,6 +16,14 @@ dependencies {
     testImplementation(kotlin("test"))
 
     testImplementation("org.junit.jupiter:junit-jupiter-params:$jupiterVersion")
+}
+
+application {
+    mainClass = "aoc.year2024.day15.MainKt"
+}
+
+tasks.run.configure {
+    standardInput = System.`in`
 }
 
 tasks.test {

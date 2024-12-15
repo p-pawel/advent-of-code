@@ -4,47 +4,55 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class WarehouseMapTest {
-    @Test
-    fun shouldApplyChange() {
 
+    @Test
+    fun `should process part 1 example 1`() {
 
         // given
 
         val initMap = listOf(
-         "########",
-         "#.@O.O.#",
-         "##..O..#",
-         "#...O..#",
-         "#.#.O..#",
-         "#...O..#",
-         "#......#",
-         "########",
+            "########",
+            "#.@O.O.#",
+            "##..O..#",
+            "#...O..#",
+            "#.#.O..#",
+            "#...O..#",
+            "#......#",
+            "########",
         );
 
-        val location = Point(2, 1)
-
-        val payload = ".OO.#"
-
-        val direction = '>'
+        val sequence = "<^^>>>vv<v>>v<<"
 
         // when
-
-        // TODO not needed object!
-        val result = applyChange(initMap, location, direction, payload )
+        val score = executeGame(initMap, listOf(sequence), 1)
 
         // then
-        val expectedMap = listOf(
-         "########",
-         "#.@.OO.#",
-         "##..O..#",
-         "#...O..#",
-         "#.#.O..#",
-         "#...O..#",
-         "#......#",
-         "########",
+        assertEquals(2028, score)
+
+    }
+
+    @Test
+    fun `should process part 2 example`() {
+
+        // given
+
+        val initMap = listOf(
+            "#######",
+            "#...#.#",
+            "#.....#",
+            "#..OO@#",
+            "#..O..#",
+            "#.....#",
+            "#######",
         );
 
-        assertEquals(expectedMap, result)
+        val sequence = "<vv<<^^<<^^"
+
+        // when
+        val score = executeGame(initMap, listOf(sequence), 2)
+
+        // then
+        assertEquals(105+207+306, score)
 
     }
 
