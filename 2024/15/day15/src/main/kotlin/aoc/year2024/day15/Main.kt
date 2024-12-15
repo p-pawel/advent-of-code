@@ -11,21 +11,42 @@ fun main() {
         .takeWhile { it.isNotEmpty() }
         .toList()
 
-    val finalMap = sequenceLines
+    val map = parseMap(mapLines)
+
+    val finalBoard = sequenceLines
         .filter { it.isNotEmpty() }
         .flatMap { it.toList() }
-        .fold(mapLines) { board, direction -> move(board, direction) }
+        .fold(map) { board, direction -> move(board, direction) }
 
-    println(finalMap.joinToString("\n"))
+    println(finalBoard.getMapString())
 
-    val score = countScore(finalMap)
+    val score = finalBoard.countScore()
 
     println(score)
-
 }
 
-fun countScore(map: List<String>): Int {
-    return map.flatMapIndexed { y, line ->
-        line.mapIndexed { x, c -> if (c == 'O') y * 100 + x else 0 }
-    }.sum()
+fun parseMap(strings: List<String>): Board {
+
+    var robot: Point? = null
+    var walls: MutableList<Point> = mutableListOf<Point>()
+    var boxes: MutableList<Point> = mutableListOf<Point>()
+
+    strings.forEachIndexed { y, line ->
+        for (x in line.indices) {
+            when (line[x]) {
+                '@' -> robot = Point(x, y)
+                '#' -> walls.add(Point(x, y))
+                'O' -> boxes.add(Point(x, y))
+            }
+        }
+    }
+
+    return Board(
+        strings[0].length,
+        strings.size,
+        robot!!,
+        walls,
+        boxes
+    )
 }
+
