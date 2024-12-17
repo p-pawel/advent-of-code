@@ -16,7 +16,7 @@
 14. [Day 14](https://github.com/p-pawel/advent-of-code/tree/master/2024/14) - Kotlin
 15. [Day 15](https://github.com/p-pawel/advent-of-code/tree/master/2024/15) - Kotlin
 16. [Day 16](https://github.com/p-pawel/advent-of-code/tree/master/2024/16) - Kotlin
-17. [Day 17](https://github.com/p-pawel/advent-of-code/tree/master/2024/17) - Kotlin
+17. [Day 17](https://github.com/p-pawel/advent-of-code/tree/master/2024/17) - Kotlin; plus another solution with metaheuristic method
 18. [Day 18](https://github.com/p-pawel/advent-of-code/tree/master/2024/18) - Kotlin
 19. [Day 19](https://github.com/p-pawel/advent-of-code/tree/master/2024/19) - Kotlin
 20. [Day 20](https://github.com/p-pawel/advent-of-code/tree/master/2024/20) - Kotlin
@@ -28,9 +28,9 @@
 
 ## Summary
 
-My initial idea was to use the AoC as an excuse to play with some uknown to me programming languages. Especially with those, whose usage in day-to-day work would be, to put it mildly, at least unwise
+My initial idea was to use the AoC as an excuse to play with some uknown to me languages. Especially with those, whose usage in day-to-day work would be, to put it mildly, at least unwise
 (my day-to-day enviroment focuses around Java, JavaScript/TypeScript and accompanying web technologies and tools).
 
-However having learnt how laborious some tasks could be, especially when I'm not able to simply reuse previous solutions from another languages - what posed a kind of pain when a series of 2D-puzzles occurred (somewhere in the middle of the Advent),
+However, during the challenge, having learnt how laborious some tasks could be, especially when I'm not able to simply reuse previous solutions from another languages - what posed a kind of pain when a series of 2D-puzzles occurred (somewhere in the middle of the Advent),
 and due to need of simply become a bit more time-effective in solving the puzzles, it somehow happened that I sticked to the Kotlin.
-The language posed something still a bit new to me (so still somehow satisified initial assumption), but it allowed to have in the back of the mind the fallback to Java if needed, and profil from awareness of JVM dependencies.
+The language posed something still a bit new to me (so still somehow satisified initial assumption), but it allowed to base on Java knowledge and to profit from awareness of JVM dependencies when needed.

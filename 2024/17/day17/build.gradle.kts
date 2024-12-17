@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.21"
+    application
 }
 
 group = "aoc.year2024"
@@ -16,9 +17,18 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:$jupiterVersion")
 }
 
+application {
+    mainClass = "aoc.year2024.day17.MainGAKt"
+}
+
+tasks.run.configure {
+    standardInput = System.`in`
+}
+
 tasks.test {
     useJUnitPlatform()
 }
+
 kotlin {
     jvmToolchain(21)
 }
