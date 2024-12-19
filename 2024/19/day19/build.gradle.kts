@@ -22,7 +22,7 @@ kotlin {
 }
 
 application {
-    mainClass = "aoc.year2024.MainKt"
+    mainClass = "aoc.year2024.day19.MainKt"
 }
 
 tasks.run.configure {

@@ -18,7 +18,7 @@
 16. [Day 16](https://github.com/p-pawel/advent-of-code/tree/master/2024/16) - Kotlin
 17. [Day 17](https://github.com/p-pawel/advent-of-code/tree/master/2024/17) - Kotlin
 18. [Day 18](https://github.com/p-pawel/advent-of-code/tree/master/2024/18) - Kotlin
-19. Day 19 - Kotlin (resolved, code under cleaning before push)
+19. [Day 19](https://github.com/p-pawel/advent-of-code/tree/master/2024/19) - Kotlin
 20. [Day 20](https://github.com/p-pawel/advent-of-code/tree/master/2024/20) - Kotlin
 21. Day 21 - Kotlin (resolved, code under cleaning before push)
 22. Day 22 - Kotlin (resolved, code under cleaning before push)
