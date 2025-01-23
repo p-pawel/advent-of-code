@@ -1,4 +1,4 @@
-import aoc.year2024.Vector
+import aoc.year2024.day14.Vector
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 

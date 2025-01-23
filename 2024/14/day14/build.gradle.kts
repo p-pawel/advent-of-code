@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.21"
+    application
 }
 
 group = "aoc.year2024"
@@ -11,6 +12,14 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+}
+
+application {
+    mainClass = "aoc.year2024.day14.MainKt"
+}
+
+tasks.run.configure {
+    standardInput = System.`in`
 }
 
 tasks.test {

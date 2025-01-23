@@ -1,5 +1,4 @@
-package aoc.year2024
-
+package aoc.year2024.day14
 import kotlin.math.pow
 import kotlin.math.sqrt
 

@@ -1,5 +1,4 @@
-package aoc.year2024
-
+package aoc.year2024.day14
 
 data class Robot(val p: Vector, val v: Vector)
 
