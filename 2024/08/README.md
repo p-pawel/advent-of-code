@@ -12,5 +12,3 @@ cd ..
 ## Observations
 
 - I enjoyed again almost going on autopilot mode where I could focus on the right part, so that a puzzle is the puzzle, not the language syntax
-
-- open issues: some code duplication in AntiNodes service and calculators calling, moreover both of them can be refactored 
