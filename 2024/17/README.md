@@ -13,6 +13,8 @@ cd day17
 cd ..
 ```
 
+Note: this bases on a sample dataset that may be not suitable for part 2. Due to copyright restriction of AoC data I cannot share my test dataset. Feel free to try it with your dataset available from the URL listed in the top.
+
 ## Observations
 
 - for part 2 brute force didn't work (full integer range appeared to be not enough) - would took roughly 500kk years 
