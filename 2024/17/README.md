@@ -45,7 +45,7 @@ Having it solved that way, after a few hours break from this subject, I experien
 When we have a large dataset to be analyzed (far too large to brute-force it), and the input can take a form of quite straightforward feature vector,
 then the meta-heuristic methods look to be a perfect candidate to use here. Moreover, from the mathematical nature of the Strange Device we can expect it have some local minima. 
 
-Particularly, I picked the Genetic Algorithm, about which I did quite a cool presentation while being yet at university 
+Particularly, I picked the **Genetic Algorithm**, about which I did quite a cool presentation while being yet at university 
 (and beside holding sentiments, I hold some knowledge). As I recall, then it could present a few variants of the geographical optimization in the real time 
 (on poor mobile Celeron), so it must have been quite performant algorithm.
 
